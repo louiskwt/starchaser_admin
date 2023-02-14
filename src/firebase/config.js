@@ -13,8 +13,10 @@ const ref = db.collection("members");
 
 const data = db.collection("members").onSnapshot((snapshot) => {
   snapshot.forEach((doc) => {
-    console.log(doc.id, "=>", doc.data());
+    // console.log(doc.id, "=>", doc.data());
   });
 });
 
-module.exports = { db, admin, ref, data };
+const taskRef = db.collection("tasks");
+
+module.exports = { db, admin, ref, data, taskRef };
