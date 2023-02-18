@@ -16,9 +16,12 @@ window.addEventListener("DOMContentLoaded", () => {
         const taskElemet = document.createElement("tr");
         const task = doc.data();
         taskElemet.innerHTML = `
-          <td>${turncate(task.name, 20)}</td>
+          <td>${turncate(task.name, 50)}</td>
           <td><a href='${task.url}' target="_blank" >Download</a></td>
           <td>${task.status}</td>
+          <td><button class="btn btn-danger" id="${
+            doc.id
+          }">Graded</button></td>\
         `;
         pendingTaskList.appendChild(taskElemet);
       });
