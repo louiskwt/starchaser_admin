@@ -12,16 +12,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   pendingTasks.then((querySnapshot) => {
     if (!querySnapshot.empty) {
-      const tasks = querySnapshot.docs.map((doc) => {
+      querySnapshot.docs.map((doc) => {
         const taskElemet = document.createElement("tr");
         const task = doc.data();
         taskElemet.innerHTML = `
           <td>${turncate(task.name, 50)}</td>
           <td><a href='${task.url}' target="_blank" >Download</a></td>
           <td>${task.status}</td>
-          <td><button class="btn btn-danger" id="${
-            doc.id
-          }">Graded</button></td>\
+          <td><button class="action-btn" id="${doc.id}">Graded</button></td>\
         `;
         pendingTaskList.appendChild(taskElemet);
       });
@@ -40,4 +38,20 @@ window.addEventListener("DOMContentLoaded", () => {
       taskList.appendChild(taskElemet);
     });
   });
+});
+
+document.addEventListener("click", (e) => {
+  const target = e.target.closest(".action-btn");
+  if (target) {
+    const id = target.id;
+    db.collection("tasks")
+      .doc(id)
+      .update({
+        status: "graded",
+      })
+      .then(() => {
+        console.log("Document successfully updated!");
+        window.location.reload();
+      });
+  }
 });
