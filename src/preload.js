@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const taskElemet = document.createElement("tr");
         const task = doc.data();
         taskElemet.innerHTML = `
-          <td>${turncate(task.name, 50)}</td>
+          <td>${turncate(task.name, 56)}</td>
           <td><a href='${task.url}' target="_blank" >Download</a></td>
           <td>${task.status}</td>
           <td><button class="action-btn" id="${doc.id}">Graded</button></td>\
@@ -24,19 +24,6 @@ window.addEventListener("DOMContentLoaded", () => {
         pendingTaskList.appendChild(taskElemet);
       });
     }
-  });
-
-  db.collection("tasks").onSnapshot((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      const taskElemet = document.createElement("tr");
-      const task = doc.data();
-      taskElemet.innerHTML = `
-        <td>${turncate(task.name, 20)}</td>
-        <td><a href='${task.url}' target="_blank" >Download</a></td>
-        <td>${task.status}</td>
-      `;
-      taskList.appendChild(taskElemet);
-    });
   });
 });
 
