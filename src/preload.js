@@ -4,7 +4,6 @@ const { db } = require("./firebase/config");
 const { turncate } = require("./utils/");
 
 window.addEventListener("DOMContentLoaded", () => {
-  const taskList = document.getElementById("task-table");
   const pendingTaskList = document.getElementById("pending-task-table");
 
   const taskRef = db.collection("tasks");
