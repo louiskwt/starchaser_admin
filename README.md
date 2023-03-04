@@ -7,3 +7,5 @@ StarChaser 的 Admin System
 - [ X ] 任務管理
 
 ## Log
+
+It's live now
