@@ -36,7 +36,6 @@ document.addEventListener("click", (e) => {
         status: "graded",
       })
       .then(() => {
-        console.log("Document successfully updated!");
         window.location.reload();
       });
   }
